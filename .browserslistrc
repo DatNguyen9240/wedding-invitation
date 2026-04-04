@@ -1,0 +1,9 @@
+# Target modern browsers only — eliminates unnecessary polyfills (~8 KiB saved)
+# These floors cover Array.at, Array.flat, Object.fromEntries, Object.hasOwn,
+# String.trimStart/trimEnd natively — no polyfills needed.
+chrome >= 85
+edge >= 85
+safari >= 14
+firefox >= 90
+not dead
+not IE 11
