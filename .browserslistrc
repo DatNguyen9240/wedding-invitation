@@ -1,9 +1,13 @@
-# Target modern browsers only — eliminates unnecessary polyfills (~8 KiB saved)
-# These floors cover Array.at, Array.flat, Object.fromEntries, Object.hasOwn,
-# String.trimStart/trimEnd natively — no polyfills needed.
-chrome >= 85
-edge >= 85
-safari >= 14
-firefox >= 90
+# Target evergreen browsers — eliminates ALL listed polyfills on production build.
+# Floors align with "Baseline 2021" (all features natively supported):
+#   Array.prototype.at      → Chrome 92, Safari 15.4, Firefox 90
+#   Object.hasOwn           → Chrome 93, Safari 15.4, Firefox 92
+#   Array.flat/flatMap      → Chrome 69 (already covered)
+#   Object.fromEntries      → Chrome 73 (already covered)
+#   String.trimStart/End    → Chrome 66 (already covered)
+chrome >= 93
+edge >= 93
+safari >= 15.4
+firefox >= 93
 not dead
 not IE 11
