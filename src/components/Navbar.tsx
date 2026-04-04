@@ -79,7 +79,7 @@ export default function Navbar() {
       </nav>
 
       {/* Side Navigation — Desktop only */}
-      <aside className="fixed left-0 top-0 hidden lg:flex flex-col items-center py-8 z-40 h-screen w-16 bg-surface-container-lowest/80 backdrop-blur-md border-r border-outline-variant/10">
+      <aside className="fixed left-0 top-0 hidden lg:flex flex-col items-center py-8 z-40 h-screen w-16 bg-surface-container-lowest/80 backdrop-blur-md border-r border-outline-variant/10" style={{ willChange: 'transform' }}>
         <div className="mt-20 flex flex-col gap-8">
           {SIDE_TOOLS.map(item => (
             <div
@@ -101,7 +101,7 @@ export default function Navbar() {
       </aside>
 
       {/* Bottom Nav — Mobile */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-highest/90 backdrop-blur-xl flex justify-around py-4 z-50 border-t border-outline-variant/10">
+      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-highest/90 backdrop-blur-lg flex justify-around py-4 z-50 border-t border-outline-variant/10" style={{ willChange: 'transform' }}>
         {MOBILE_NAV.map(item => (
           <Link
             key={item.icon}
