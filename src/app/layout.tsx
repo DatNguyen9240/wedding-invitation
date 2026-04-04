@@ -10,7 +10,8 @@ const newsreader = Newsreader({
   // 'optional' can suppress the swap entirely if the font is slow — bad for LCP.
   display: 'swap',
   style: ['normal', 'italic'],
-  weight: ['200', '300', '400', '500', '600', '700', '800'],
+  // Only weights actually used — 200 (font-extralight), 400 (regular), 700 (heading bold default)
+  weight: ['200', '400', '700'],
 })
 
 const manrope = Manrope({
@@ -43,11 +44,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        {/* Material Symbols — blocking stylesheet, fast due to preconnect hints above.
-            Async loading caused icons to be invisible permanently (FontFace detection race). */}
+        {/* Material Symbols — single static instance (opsz=24, wght=300, FILL=0, GRAD=0).
+            Requesting a range like 20..48,100..700,0..1,-50..200 downloads the FULL variable font
+            = 3.8 MB. Requesting exact values downloads only the one static instance = ~200 KB. */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap"
         />
 
         {/*
