@@ -42,6 +42,7 @@ const nextConfig: NextConfig = {
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
+      // core-js (standard) — strip polyfills for features native in Chrome 95+/Safari 15.4+
       'core-js/modules/es.array.at': path.resolve(__dirname, 'scripts/no-op.js'),
       'core-js/modules/es.array.flat': path.resolve(__dirname, 'scripts/no-op.js'),
       'core-js/modules/es.array.flat-map': path.resolve(__dirname, 'scripts/no-op.js'),
@@ -49,6 +50,14 @@ const nextConfig: NextConfig = {
       'core-js/modules/es.object.has-own': path.resolve(__dirname, 'scripts/no-op.js'),
       'core-js/modules/es.string.trim-end': path.resolve(__dirname, 'scripts/no-op.js'),
       'core-js/modules/es.string.trim-start': path.resolve(__dirname, 'scripts/no-op.js'),
+      // core-js-pure (used by @babel/runtime-corejs3) — same strip, previously missing from webpack
+      'core-js-pure/modules/es.array.at': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js-pure/modules/es.array.flat': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js-pure/modules/es.array.flat-map': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js-pure/modules/es.object.from-entries': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js-pure/modules/es.object.has-own': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js-pure/modules/es.string.trim-end': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js-pure/modules/es.string.trim-start': path.resolve(__dirname, 'scripts/no-op.js'),
     };
     return config;
   },

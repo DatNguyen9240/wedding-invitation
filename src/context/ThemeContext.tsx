@@ -27,11 +27,17 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [])
 
   function apply(t: Theme) {
-    if (t === 'pink') {
-      document.documentElement.setAttribute('data-theme', 'pink')
-    } else {
-      document.documentElement.removeAttribute('data-theme')
-    }
+    // Defer DOM mutation to next animation frame.
+    // This prevents forced reflows: if anything reads layout properties
+    // (offsetWidth, getBoundingClientRect, etc.) in the same sync task,
+    // the browser would have had to recalculate layout immediately.
+    requestAnimationFrame(() => {
+      if (t === 'pink') {
+        document.documentElement.setAttribute('data-theme', 'pink')
+      } else {
+        document.documentElement.removeAttribute('data-theme')
+      }
+    })
   }
 
   const toggleTheme = () => {

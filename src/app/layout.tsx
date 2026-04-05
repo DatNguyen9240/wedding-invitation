@@ -41,17 +41,29 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${newsreader.variable} ${manrope.variable}`}>
       <head>
-        {/* Preconnect to Google Fonts origins to eliminate DNS/TLS setup time */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-        {/* Material Symbols — single static instance (opsz=24, wght=300, FILL=0, GRAD=0).
-            Requesting a range like 20..48,100..700,0..1,-50..200 downloads the FULL variable font
-            = 3.8 MB. Requesting exact values downloads only the one static instance = ~200 KB. */}
+        {/* Material Symbols — loaded asynchronously so it never blocks first paint.
+            The print/onload trick: browser downloads it as a low-priority print stylesheet,
+            then swaps media to 'all' once loaded, keeping it off the critical path.
+            Fallback <noscript> covers no-JS environments. */}
         <link
-          rel="stylesheet"
+          rel="preload"
+          as="style"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap"
         />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          rel="stylesheet"
+          media="print"
+          // @ts-expect-error — onLoad on <link> is valid HTML but not in React's types
+          onLoad="this.media='all'"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap"
+        />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap"
+          />
+        </noscript>
 
         {/*
            Critical: Inline script to set theme before first paint.
