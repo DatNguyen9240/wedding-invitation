@@ -15,12 +15,8 @@ export default function HeroSection() {
           alt="Luxury wedding editorial photography"
           sizes="100vw"
         />
-        {/* Bottom vignette — strongest */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10 z-10" />
-        {/* Left vignette */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/20 to-transparent z-10" />
-        {/* Top vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-transparent z-10" style={{ height: '40%' }} />
+        {/* Consolidated Cinematic Vignette — single layer for performance */}
+        <div className="absolute inset-0 z-10 hero-vignette" />
       </div>
 
       {/* Floating editorial badge — top right */}
