@@ -1,55 +1,17 @@
 @import "tailwindcss";
 
-/* ===== Tailwind v4 Theme — Midnight Noir (default dark) ===== */
+/* ===== Tailwind v4 Theme — Midnight Noir (Standard) ===== */
 @theme {
-  /* Primary — Champagne Gold */
   --color-primary: #c9a97a;
-  --color-primary-container: #5a4020;
   --color-on-primary: #0f0a04;
-  --color-on-primary-container: #f5e8cc;
-
-  /* Secondary — Dusty Mauve */
   --color-secondary: #b89aae;
-  --color-secondary-container: #5a3860;
-  --color-on-secondary: #0e0610;
-  --color-on-secondary-container: #eeddec;
-
-  /* Tertiary — Muted Sage */
-  --color-tertiary: #7ab4b0;
-  --color-tertiary-container: #305a58;
-  --color-on-tertiary: #060e10;
-  --color-on-tertiary-container: #cce8e4;
-
-  /* Surfaces — Deep Near-Black */
   --color-surface: #0f0f14;
-  --color-surface-variant: #18182a;
-  --color-surface-container: #161620;
-  --color-surface-container-low: #121218;
-  --color-surface-container-high: #1e1e2c;
-  --color-surface-container-highest: #24243a;
-  --color-surface-container-lowest: #080810;
-
-  --color-on-surface: #ede8e0;
-  --color-on-surface-variant: #a09078;
-
   --color-background: #080810;
   --color-on-background: #ede8e0;
   --color-outline: #504838;
-  --color-outline-variant: #282018;
-
-  --color-error: #ffb4ab;
-
-  /* Typography */
   --font-serif: 'Newsreader', Georgia, serif;
   --font-body: 'Manrope', system-ui, sans-serif;
-
-  /* Border Radius — sharp editorial */
   --radius: 0px;
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-full: 9999px;
 }
 
 /* ===== Base Styles ===== */
@@ -59,100 +21,51 @@
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
   }
-
   body {
     background-color: var(--color-background);
     color: var(--color-on-background);
-    /* Optimization: Prevent unnecessary scroll-anchoring reflows */
-    overflow-x: hidden;
+    margin: 0;
   }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-newsreader), serif;
-  }
-
-  ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-track { background: var(--color-surface); }
-  ::-webkit-scrollbar-thumb { background: var(--color-outline); }
-}
-
-/* ===== Animations ===== */
-@keyframes ticker {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-50%, 0, 0); }
-}
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== Components ===== */
 @layer components {
   .glass-header {
-    position: relative;
-    background: var(--color-surface);
+    background: rgba(15, 15, 20, 0.95);
+    position: sticky;
+    top: 0;
     z-index: 50;
-    /* Kill backdrop-filter to save 3.9s Style & Layout */
-    backdrop-filter: none !important;
   }
 
   .hero-vignette {
-    background-image: 
-      linear-gradient(to top, var(--color-background), var(--color-background) / 0.7, transparent),
-      linear-gradient(to right, var(--color-background) / 0.8, transparent);
-    background-size: 100% 100%;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-background), transparent 75%);
     pointer-events: none;
   }
 
-  .muse-mask {
-    clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+  /* Ticker — Zero lag animation */
+  @keyframes ticker {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
   }
 
-  .font-serif { font-family: var(--font-newsreader), serif; }
-
-  /* Ticker strip — Purely isolated box */
   .animate-ticker {
     display: flex;
-    animation: ticker 35s linear infinite;
-    contain: layout paint;
-  }
-
-  /* Gold/champagne gradient text — Simplified for performance */
-  .text-gradient-gold {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-on-primary-container));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .animate-fade-up {
-    animation: fade-up 0.5s ease-out both;
+    animation: ticker 45s linear infinite;
   }
 }
 
-/* ===== Bloom — Theme Overrides ===== */
+/* ===== Bloom — Pink Theme Restoration (Ultra-lightweight) ===== */
 :root[data-theme="pink"] {
   --color-primary: #e896b0;
-  --color-primary-container: #801040;
-  --color-on-primary: #0e0408;
-  --color-on-primary-container: #fce0ec;
-  --color-secondary: #c07898;
-  --color-secondary-container: #600848;
-  --color-on-secondary: #0e0608;
-  --color-on-secondary-container: #f8d0e4;
   --color-background: #0c0609;
   --color-on-background: #f0e4ec;
   --color-surface: #160c14;
-  --color-surface-container: #1a0e18;
-  --color-on-surface: #f0e4ec;
-  --color-on-surface-variant: #a08090;
   --color-outline: #5a3050;
-  --color-outline-variant: #301828;
+  --color-secondary: #c07898;
 }
 
-:root[data-theme="pink"] .text-gradient-gold {
-  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+:root[data-theme="pink"] .glass-header {
+  background: rgba(22, 12, 20, 0.95);
 }
