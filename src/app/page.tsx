@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar'
+import NavbarStatic from '@/components/NavbarStatic'
 import FooterShared from '@/components/FooterShared'
 import HeroSection from '@/components/sections/HeroSection'
 import GallerySection from '@/components/sections/GallerySection'
@@ -8,7 +8,7 @@ import QuoteSection from '@/components/sections/QuoteSection'
 export default function LandingPage() {
   return (
     <>
-      <Navbar isStatic={true} />
+      <NavbarStatic />
       <main className="lg:pl-20">
         <HeroSection />
         <GallerySection />
