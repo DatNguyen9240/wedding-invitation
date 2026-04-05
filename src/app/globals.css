@@ -63,53 +63,28 @@
   body {
     background-color: var(--color-background);
     color: var(--color-on-background);
+    /* Optimization: Prevent unnecessary scroll-anchoring reflows */
+    overflow-x: hidden;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-newsreader), serif;
   }
 
-  /* Refined scrollbar */
-  ::-webkit-scrollbar {
-    width: 3px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--color-surface);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-outline);
-  }
-
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--color-surface); }
+  ::-webkit-scrollbar-thumb { background: var(--color-outline); }
 }
 
 /* ===== Animations ===== */
 @keyframes ticker {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== Components ===== */
@@ -118,127 +93,66 @@
     position: relative;
     background: var(--color-surface);
     z-index: 50;
-  }
-
-  /* Removed heavily expensive backdrop-filter to achieve 100/100 Lighthouse */
-  .glass-header::before {
-    display: none;
+    /* Kill backdrop-filter to save 3.9s Style & Layout */
+    backdrop-filter: none !important;
   }
 
   .hero-vignette {
     background-image: 
-      linear-gradient(to top, var(--color-background), var(--color-background) / 0.6, var(--color-background) / 0.1),
-      linear-gradient(to right, var(--color-background) / 0.9, var(--color-background) / 0.2, transparent),
-      linear-gradient(to bottom, var(--color-background) / 0.6, transparent 40%);
+      linear-gradient(to top, var(--color-background), var(--color-background) / 0.7, transparent),
+      linear-gradient(to right, var(--color-background) / 0.8, transparent);
     background-size: 100% 100%;
-    background-repeat: no-repeat;
+    pointer-events: none;
   }
 
   .muse-mask {
     clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
   }
 
-  .font-serif {
-    font-family: var(--font-newsreader), serif;
-  }
+  .font-serif { font-family: var(--font-newsreader), serif; }
 
-  /* Editor canvas — dot grid like a design tool */
-  .bg-canvas {
-    background-color: var(--color-surface-container-lowest);
-    background-image: radial-gradient(circle, var(--color-outline-variant) 1px, transparent 1px);
-    background-size: 22px 22px;
-  }
-
-  /* Ticker strip */
+  /* Ticker strip — Purely isolated box */
   .animate-ticker {
     display: flex;
-    animation: ticker 30s linear infinite;
-    /* Optimization: Isolate animation to its own box to prevent layout-affecting changes */
-    contain: strict;
+    animation: ticker 35s linear infinite;
+    contain: layout paint;
   }
 
-  /* Gold/champagne gradient text */
+  /* Gold/champagne gradient text — Simplified for performance */
   .text-gradient-gold {
-    background: linear-gradient(135deg,
-        var(--color-primary) 0%,
-        var(--color-on-primary-container) 50%,
-        var(--color-primary) 100%);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-on-primary-container));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Subtle reveal animation */
   .animate-fade-up {
-    animation: fade-up 0.6s ease-out both;
-  }
-
-  /*
-    Decorative watermark — rendered via CSS content so Lighthouse's contrast
-    auditor (which only checks DOM text nodes) never sees it.
-    Usage: <div class="eb-watermark" data-text="Eternal Bloom" aria-hidden="true" />
-  */
-  .eb-watermark::before {
-    content: attr(data-text);
-    font-family: var(--font-newsreader), serif;
-    line-height: 1;
-    color: var(--color-on-surface-variant);
-    opacity: 0.05;
-    white-space: nowrap;
-    display: block;
-    pointer-events: none;
-    user-select: none;
+    animation: fade-up 0.5s ease-out both;
   }
 }
 
-/* ===== Bloom — Dark Rose Theme ===== */
-/* NOT a bright theme — a warm, deep wine/blush dark mode */
+/* ===== Bloom — Theme Overrides ===== */
 :root[data-theme="pink"] {
-  /* Primary — Blush Pink */
   --color-primary: #e896b0;
   --color-primary-container: #801040;
   --color-on-primary: #0e0408;
   --color-on-primary-container: #fce0ec;
-
-  /* Secondary — Deep Rose */
   --color-secondary: #c07898;
   --color-secondary-container: #600848;
   --color-on-secondary: #0e0608;
   --color-on-secondary-container: #f8d0e4;
-
-  /* Tertiary — Blush Pearl */
-  --color-tertiary: #d0a0c0;
-  --color-tertiary-container: #601858;
-  --color-on-tertiary: #0e0610;
-  --color-on-tertiary-container: #f8e8f4;
-
-  /* Surfaces — Very Dark Wine/Aubergine */
-  --color-surface: #160c14;
-  --color-surface-variant: #1e1028;
-  --color-surface-container: #1a0e18;
-  --color-surface-container-low: #160c14;
-  --color-surface-container-high: #221428;
-  --color-surface-container-highest: #2a1a30;
-  --color-surface-container-lowest: #0e080e;
-
-  --color-on-surface: #f0e4ec;
-  --color-on-surface-variant: #a08090;
-
   --color-background: #0c0609;
   --color-on-background: #f0e4ec;
+  --color-surface: #160c14;
+  --color-surface-container: #1a0e18;
+  --color-on-surface: #f0e4ec;
+  --color-on-surface-variant: #a08090;
   --color-outline: #5a3050;
   --color-outline-variant: #301828;
-
-  --color-error: #ffb4ab;
 }
 
-/* Bloom theme component overrides */
 :root[data-theme="pink"] .text-gradient-gold {
-  background: linear-gradient(135deg,
-      var(--color-secondary) 0%,
-      var(--color-primary) 50%,
-      var(--color-secondary) 100%);
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
