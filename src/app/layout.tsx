@@ -41,24 +41,25 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${newsreader.variable} ${manrope.variable}`}>
       <head>
-        {/* Material Symbols — loaded asynchronously so it never blocks first paint.
-            The print/onload trick: browser downloads it as a low-priority print stylesheet,
-            then swaps media to 'all' once loaded, keeping it off the critical path.
-            Fallback <noscript> covers no-JS environments. */}
-        <link
-          rel="preload"
-          as="style"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap"
-        />
+        {/* Material Symbols — async loaded via vanilla JS so React's event system
+            is bypassed entirely. React ignores string onLoad handlers (it only
+            accepts functions), so the old print/onload trick never worked. */}
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          rel="stylesheet"
-          media="print"
-          // @ts-expect-error — onLoad on <link> is valid HTML but not in React's types
-          onLoad="this.media='all'"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap"
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+  var l=document.createElement('link');
+  l.rel='stylesheet';
+  l.href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap';
+  l.media='print';
+  l.onload=function(){l.media='all';};
+  document.head.appendChild(l);
+})();`,
+          }}
         />
         <noscript>
+          {/* Fallback for no-JS: load synchronously */}
+          {/* eslint-disable-next-line @next/next/no-page-custom-font */}
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap"
