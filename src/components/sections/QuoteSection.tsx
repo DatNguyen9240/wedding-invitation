@@ -26,9 +26,9 @@ export default function QuoteSection() {
 
         {/* Section index */}
         <div className="flex items-center gap-4 mb-16">
-          <span className="font-body text-[9px] uppercase tracking-[0.5em] text-secondary/80">04</span>
+          <span className="font-body text-[9px] uppercase tracking-[0.5em] text-secondary">04</span>
           <span className="h-px w-10 bg-secondary/30" />
-          <span className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant">Testimonial</span>
+          <h2 className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface">Testimonial</h2>
         </div>
 
         {/* Quote */}

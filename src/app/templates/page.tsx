@@ -23,7 +23,7 @@ export default function TemplatesPage() {
           <div className="flex items-center gap-4 mb-8">
             <span className="font-body text-[9px] uppercase tracking-[0.5em] text-secondary">Volume I</span>
             <span className="h-px w-10 bg-secondary/30" />
-            <span className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/40">
+            <span className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface">
               {TEMPLATES.length} Designs
             </span>
           </div>

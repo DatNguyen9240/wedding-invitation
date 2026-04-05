@@ -27,9 +27,9 @@ export default function AtelierSection() {
           {/* Left: section header + features */}
           <div>
             <div className="flex items-center gap-4 mb-8">
-              <span className="font-body text-[9px] uppercase tracking-[0.5em] text-secondary/80">03</span>
+              <span className="font-body text-[9px] uppercase tracking-[0.5em] text-secondary">03</span>
               <span className="h-px w-10 bg-secondary/30" />
-              <span className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant">The Experience</span>
+              <span className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface">The Experience</span>
             </div>
 
             <h2 className="font-serif text-4xl lg:text-5xl leading-[1.1] mb-16">
@@ -47,7 +47,7 @@ export default function AtelierSection() {
                   key={f.num}
                   className="grid grid-cols-[3rem_1fr] gap-6 py-9 group hover:bg-surface-container/30 transition-colors -mx-4 px-4 cursor-default"
                 >
-                  <span className="font-serif text-2xl text-secondary/55 group-hover:text-secondary/80 transition-colors leading-none pt-1">
+                  <span className="font-serif text-2xl text-secondary/90 group-hover:text-secondary transition-colors leading-none pt-1">
                     {f.num}
                   </span>
                   <div>

@@ -39,9 +39,9 @@ export default function HeroSection() {
 
         {/* Section index line */}
         <div className="flex items-center gap-4 mb-10">
-          <span className="font-body text-[9px] uppercase tracking-[0.5em] text-secondary/80">01</span>
+          <span className="font-body text-[9px] uppercase tracking-[0.5em] text-secondary">01</span>
           <span className="h-px w-12 bg-secondary/40" />
-          <span className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/60">Introduction</span>
+          <span className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface">Introduction</span>
         </div>
 
         {/* Headline */}
@@ -72,7 +72,7 @@ export default function HeroSection() {
             ].map(s => (
               <div key={s.label} className="border-l border-outline-variant/30 pl-6">
                 <div className="font-serif text-2xl text-on-surface leading-none mb-1">{s.num}</div>
-                <div className="font-body text-[9px] uppercase tracking-[0.3em] text-on-surface-variant">{s.label}</div>
+                <div className="font-body text-[9px] uppercase tracking-[0.3em] text-on-surface">{s.label}</div>
               </div>
             ))}
           </div>
@@ -85,7 +85,7 @@ export default function HeroSection() {
           {[0, 1].map((i) => (
             <span
               key={i}
-              className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/35 whitespace-nowrap pr-20"
+              className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/70 whitespace-nowrap pr-20"
             >
               Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
               Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;

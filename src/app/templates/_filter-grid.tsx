@@ -41,7 +41,7 @@ function TemplateCard({
               {String(index).padStart(2, '0')}
             </div>
             <h3 className="font-serif text-xl leading-tight text-on-surface mb-1">{name}</h3>
-            <p className="font-body text-[9px] uppercase tracking-widest text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+            <p className="font-body text-[9px] uppercase tracking-widest text-on-surface opacity-0 group-hover:opacity-100 transition-opacity duration-400">
               {subtitle}
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function FilterGrid() {
             onClick={() => setActiveFilter(f)}
             className={`font-body text-[10px] uppercase tracking-[0.25em] whitespace-nowrap transition-all duration-200 pb-0.5 flex-shrink-0 ${activeFilter === f
               ? 'text-primary border-b border-primary'
-              : 'text-on-surface-variant border-b border-transparent hover:text-on-surface'
+              : 'text-on-surface border-b border-transparent hover:text-primary'
               }`}
           >
             {f}

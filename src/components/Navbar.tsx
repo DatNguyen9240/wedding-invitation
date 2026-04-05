@@ -54,7 +54,7 @@ export default function Navbar() {
                   className={`font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5 ${
                     isActive
                       ? 'text-primary border-b border-primary'
-                      : 'text-on-surface-variant hover:text-on-surface border-b border-transparent'
+                      : 'text-on-surface hover:text-primary border-b border-transparent'
                   }`}
                 >
                   {link.label}
@@ -64,11 +64,11 @@ export default function Navbar() {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <ThemeToggle />
             <button
-              className="text-on-surface-variant hover:text-secondary transition-colors"
-              aria-label="Account"
+              className="flex items-center justify-center p-2 rounded-full border border-outline-variant/30 text-on-surface hover:bg-secondary/10 hover:text-secondary transition-all duration-300"
+              aria-label="Account / Profile"
             >
               <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
                 account_circle
@@ -87,12 +87,12 @@ export default function Navbar() {
               className="group flex flex-col items-center gap-1 cursor-pointer w-full px-2"
             >
               <span
-                className="material-symbols-outlined text-outline group-hover:text-secondary transition-colors duration-300"
+                className="material-symbols-outlined text-on-surface-variant group-hover:text-secondary transition-colors duration-300"
                 style={{ fontSize: '18px' }}
               >
                 {item.icon}
               </span>
-              <span className="text-[7px] uppercase tracking-[0.15em] text-outline group-hover:text-secondary transition-colors duration-300">
+              <span className="text-[7px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary transition-colors duration-300">
                 {item.label}
               </span>
             </div>
@@ -107,7 +107,7 @@ export default function Navbar() {
             key={item.icon}
             href={item.href}
             className={`flex flex-col items-center gap-1 transition-colors ${
-              pathname === item.href ? 'text-secondary' : 'text-on-surface-variant'
+              pathname === item.href ? 'text-secondary' : 'text-on-surface'
             }`}
           >
             <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>

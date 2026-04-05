@@ -12,12 +12,12 @@ export default function FooterShared({ variant = 'full' }: FooterSharedProps) {
         <div className="font-serif text-4xl tracking-tight text-on-surface-variant/10 select-none">
           Eternal Bloom
         </div>
-        <div className="flex gap-8 font-body text-[10px] uppercase tracking-widest text-on-surface-variant">
+        <div className="flex gap-8 font-body text-[10px] uppercase tracking-widest text-on-surface">
           <a href="#" className="hover:text-secondary transition-colors">Terms</a>
           <a href="#" className="hover:text-secondary transition-colors">Privacy</a>
           <a href="#" className="hover:text-secondary transition-colors">Ethics</a>
         </div>
-        <p className="font-body text-[10px] text-outline text-center uppercase tracking-widest">
+        <p className="font-body text-[10px] text-on-surface text-center uppercase tracking-widest">
           © 2026 Eternal Bloom. Curated for the modern romantic.
         </p>
       </footer>
@@ -47,7 +47,7 @@ export default function FooterShared({ variant = 'full' }: FooterSharedProps) {
               <Link
                 key={l}
                 href="#"
-                className="block font-body text-xs text-on-surface-variant hover:text-on-surface transition-colors uppercase tracking-wider"
+                className="block font-body text-xs text-on-surface hover:text-secondary transition-colors uppercase tracking-wider"
               >
                 {l}
               </Link>
@@ -62,7 +62,7 @@ export default function FooterShared({ variant = 'full' }: FooterSharedProps) {
               <Link
                 key={l}
                 href="#"
-                className="block font-body text-xs text-on-surface-variant hover:text-on-surface transition-colors uppercase tracking-wider"
+                className="block font-body text-xs text-on-surface hover:text-secondary transition-colors uppercase tracking-wider"
               >
                 {l}
               </Link>
@@ -72,7 +72,7 @@ export default function FooterShared({ variant = 'full' }: FooterSharedProps) {
 
         <div className="space-y-6">
           <h3 className="font-serif text-base text-secondary italic">Subscribe</h3>
-          <p className="font-body text-xs text-on-surface-variant leading-relaxed">
+          <p className="font-body text-xs text-on-surface leading-relaxed">
             Join our inner circle for exclusive previews of upcoming collections.
           </p>
           <div className="relative">
@@ -89,10 +89,10 @@ export default function FooterShared({ variant = 'full' }: FooterSharedProps) {
 
       {/* Bottom bar */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 px-8 lg:px-16 py-8">
-        <p className="font-body text-[9px] tracking-widest text-on-surface-variant uppercase">
+        <p className="font-body text-[9px] tracking-widest text-on-surface uppercase">
           © 2026 Eternal Bloom. Curated for the modern romantic.
         </p>
-        <div className="flex gap-8 font-body text-[9px] tracking-widest uppercase text-on-surface-variant">
+        <div className="flex gap-8 font-body text-[9px] tracking-widest uppercase text-on-surface">
           <a href="#" className="hover:text-secondary transition-colors">Terms</a>
           <a href="#" className="hover:text-secondary transition-colors">Privacy</a>
           <a href="#" className="hover:text-secondary transition-colors">Ethics</a>

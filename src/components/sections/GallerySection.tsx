@@ -100,9 +100,9 @@ export default function GallerySection() {
         <div className="flex items-end justify-between mb-20 border-b border-outline-variant/20 pb-10">
           <div>
             <div className="flex items-center gap-4 mb-5">
-              <span className="font-body text-[9px] uppercase tracking-[0.5em] text-secondary/80">02</span>
+              <span className="font-body text-[9px] uppercase tracking-[0.5em] text-secondary">02</span>
               <span className="h-px w-10 bg-secondary/30" />
-              <span className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant">The Gallery</span>
+              <span className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface">The Gallery</span>
             </div>
             <h2 className="font-serif text-5xl lg:text-6xl leading-tight">
               The Curated
@@ -112,7 +112,7 @@ export default function GallerySection() {
           </div>
           <Link
             href="/templates"
-            className="hidden md:flex items-center gap-3 font-body text-[10px] uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors pb-1 border-b border-transparent hover:border-primary"
+            className="hidden md:flex items-center gap-3 font-body text-[10px] uppercase tracking-widest text-on-surface hover:text-primary transition-colors pb-1 border-b border-transparent hover:border-primary"
           >
             View All <span>→</span>
           </Link>

@@ -78,7 +78,7 @@ export default function TemplateCarousel() {
                     {String(i + 1).padStart(2, '0')}
                   </div>
                   <h3 className="font-serif text-2xl text-on-surface mb-1">{t.name}</h3>
-                  <p className="font-body text-[10px] uppercase tracking-widest text-on-surface-variant">
+                  <p className="font-body text-[10px] uppercase tracking-widest text-on-surface">
                     {t.subtitle}
                   </p>
                 </div>
@@ -116,7 +116,7 @@ export default function TemplateCarousel() {
         <div className="flex-1" />
 
         {/* Counter */}
-        <span className="font-body text-[9px] uppercase tracking-widest text-on-surface-variant">
+        <span className="font-body text-[9px] uppercase tracking-widest text-on-surface">
           {String(current + 1).padStart(2, '0')}&thinsp;/&thinsp;{String(TEMPLATES.length).padStart(2, '0')}
         </span>
 
@@ -125,7 +125,7 @@ export default function TemplateCarousel() {
           <button
             onClick={prev}
             disabled={current === 0}
-            className="w-10 h-10 flex items-center justify-center border border-outline-variant/20 text-on-surface-variant hover:text-secondary hover:border-secondary/40 disabled:opacity-20 disabled:cursor-default transition-all duration-200"
+            className="w-10 h-10 flex items-center justify-center border border-outline-variant/30 text-on-surface hover:text-secondary hover:border-secondary/40 disabled:opacity-20 disabled:cursor-default transition-all duration-200"
             aria-label="Previous template"
           >
             <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_back</span>
@@ -133,7 +133,7 @@ export default function TemplateCarousel() {
           <button
             onClick={next}
             disabled={current === TEMPLATES.length - 1}
-            className="w-10 h-10 flex items-center justify-center border border-outline-variant/20 text-on-surface-variant hover:text-secondary hover:border-secondary/40 disabled:opacity-20 disabled:cursor-default transition-all duration-200"
+            className="w-10 h-10 flex items-center justify-center border border-outline-variant/30 text-on-surface hover:text-secondary hover:border-secondary/40 disabled:opacity-20 disabled:cursor-default transition-all duration-200"
             aria-label="Next template"
           >
             <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_forward</span>
