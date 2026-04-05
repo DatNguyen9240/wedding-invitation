@@ -19,10 +19,9 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
   },
   experimental: {
-    // Inlines CSS into the HTML response — eliminates the render-blocking CSS chunk
-    // (05pr6j26k0iup.css, 10.5 KiB, ~150–300ms) flagged by Lighthouse.
-    // This is the App Router-safe flag (NOT `optimizeCss` which uses critters/Pages Router only).
-    inlineCss: true,
+    // Disabled inlineCss to prevent main-thread bottleneck (2s style parse).
+    // Browser parallel loading of CSS is more efficient for this editorial design.
+    inlineCss: false,
   },
   // Support Turbopack resolving aliases for polyfill stripping.
   // Using an absolute path ensures the bundler definitively resolves the no-op file.
