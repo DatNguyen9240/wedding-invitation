@@ -79,8 +79,8 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Ticker strip — 2 copies is the minimum for a seamless translateX(-50%) loop */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-outline-variant/20 overflow-hidden bg-surface-container-lowest/60 backdrop-blur-sm">
+      {/* Ticker strip — Static background to avoid expensive backdrop-filter calculations during animation loop */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-outline-variant/20 overflow-hidden bg-surface-container-lowest/90">
         <div className="animate-ticker py-3">
           {[0, 1].map((i) => (
             <span
