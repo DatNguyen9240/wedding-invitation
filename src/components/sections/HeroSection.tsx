@@ -10,6 +10,8 @@ export default function HeroSection() {
         <Image
           fill
           priority
+          fetchPriority="high"
+          decoding="async"
           className="object-cover object-center"
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlqgtImn_YHkfQv0qg8Ff-kgaj1bZtvKhJH9-gnoVIbhOc2nBmg5MJD3U5JAMYdrh9QhYpILBMEI5dw9M1WkdY_WPgXMiHWAB8Pus-n6Mg-6cTVhTsezR01LjKZNtsrLFmFQlHuQVJGlaI9zpInhVRZPml-6O6Hm2rsoNhp41F01AEmKwn-pxTwUw5CM9YK0a37yFyzeCHOdpyWqF3_V3AXvq2z7X40NgURMxNSWm5bTZP-xSuaAqbuUG2rUF2kx7VfFjqlsVYJXfL"
           alt="Luxury wedding editorial photography"
@@ -77,7 +79,7 @@ export default function HeroSection() {
 
       {/* Ticker strip — 2 copies is the minimum for a seamless translateX(-50%) loop */}
       <div className="absolute bottom-0 left-0 right-0 border-t border-outline-variant/20 overflow-hidden bg-surface-container-lowest">
-        <div className="animate-ticker py-3">
+        <div className="animate-ticker py-3" style={{ willChange: 'transform' }}>
           {[0, 1].map((i) => (
             <span
               key={i}

@@ -22,9 +22,8 @@ function TemplateCard({ src, alt, name, subtitle, index, aspect, badge, sizes = 
           src={src}
           alt={alt}
           sizes={sizes}
-          loading="lazy"
+          loading={index <= 2 ? "eager" : "lazy"} 
           decoding="async"
-          fetchPriority="low"
         />
 
         {/* Layer: gradient from bottom */}

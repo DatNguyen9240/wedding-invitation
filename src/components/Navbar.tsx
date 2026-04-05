@@ -1,9 +1,13 @@
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import ThemeToggle from '@/components/ui/ThemeToggle'
-import NavLink from '@/components/ui/NavLink'
-import MobileNav from '@/components/navigation/MobileNav'
 import AccountButton from '@/components/navigation/AccountButton'
+import NavLinksContainer from '@/components/navigation/NavLinksContainer'
 import { NAV_LINKS, SIDE_TOOLS, MOBILE_NAV } from '@/constants/navigation'
+
+const MobileNav = dynamic(() => import('@/components/navigation/MobileNav'), {
+  ssr: true,
+})
 
 export default function Navbar() {
   return (
@@ -19,19 +23,13 @@ export default function Navbar() {
             Eternal Bloom
           </Link>
 
-          {/* Nav links — desktop (using NavLink client islands) */}
-          <div className="hidden md:flex gap-10">
-            {NAV_LINKS.map(link => (
-              <NavLink
-                key={link.href}
-                href={link.href}
-                label={link.label}
-                className="font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5"
-                activeClassName="text-primary border-b border-primary"
-                inactiveClassName="text-on-surface hover:text-primary border-b border-transparent"
-              />
-            ))}
-          </div>
+          {/* Nav links — desktop (using single client island) */}
+          <NavLinksContainer
+            links={NAV_LINKS}
+            className="hidden md:flex gap-10"
+            activeClassName="text-primary border-b border-primary font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5"
+            inactiveClassName="text-on-surface hover:text-primary border-b border-transparent font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5"
+          />
 
           {/* Actions (using dedicated client islands) */}
           <div className="flex items-center gap-5">

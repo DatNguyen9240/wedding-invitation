@@ -6,33 +6,18 @@ import Link from 'next/link'
 import Button from '@/components/ui/Button'
 import Label from '@/components/ui/Label'
 import IconButton from '@/components/ui/IconButton'
+import {
+  TOOLS,
+  ALIGN_ICONS,
+  RATIOS,
+  CORNERS,
+  SWATCHES,
+  TYPE_ROWS
+} from '@/constants/editor'
 
 type PanelTab = 'Layout' | 'Style' | 'Media'
 
-const TOOLS = [
-  { icon: 'grid_view', label: 'Layout' },
-  { icon: 'auto_awesome', label: 'Motifs' },
-  { icon: 'palette', label: 'Style' },
-  { icon: 'texture', label: 'Texture' },
-  { icon: 'photo_library', label: 'Media' },
-  { icon: 'text_fields', label: 'Text' },
-]
 
-const ALIGN_ICONS = [
-  'align_horizontal_left',
-  'align_horizontal_center',
-  'align_horizontal_right',
-]
-
-const RATIOS = ['3:4', '2:3', '1:1']
-const CORNERS = ['Sharp', 'Soft', 'Round']
-const SWATCHES = ['#080810', '#c9a97a', '#b89aae', '#7ab4b0', '#ede8e0']
-
-const TYPE_ROWS = [
-  { label: 'Headlines', value: 'Newsreader', size: '48px' },
-  { label: 'Body', value: 'Manrope', size: '14px' },
-  { label: 'Labels', value: 'Manrope', size: '10px' },
-]
 
 export default function EditorPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)

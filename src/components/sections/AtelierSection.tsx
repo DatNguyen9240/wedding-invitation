@@ -74,7 +74,6 @@ export default function AtelierSection() {
                 sizes="(min-width:1024px) 40vw, 100vw"
                 loading="lazy"
                 decoding="async"
-                fetchPriority="low"
               />
               {/* Overlay gradient bottom */}
               <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent" />
