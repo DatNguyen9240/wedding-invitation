@@ -79,15 +79,17 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Ticker strip */}
+      {/* Ticker strip — 2 copies is the minimum for a seamless translateX(-50%) loop */}
       <div className="absolute bottom-0 left-0 right-0 border-t border-outline-variant/20 overflow-hidden bg-surface-container-lowest/60 backdrop-blur-sm">
         <div className="animate-ticker py-3">
-          {Array.from({ length: 12 }).map((_, i) => (
+          {[0, 1].map((i) => (
             <span
               key={i}
               className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/35 whitespace-nowrap pr-20"
             >
-              Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦
+              Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
+              Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
+              Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
             </span>
           ))}
         </div>
