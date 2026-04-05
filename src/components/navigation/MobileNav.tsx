@@ -18,6 +18,7 @@ export default function MobileNav({ items }: { items: MobileNavItem[] }) {
         <Link
           key={item.icon}
           href={item.href}
+          prefetch={false}
           className={`flex flex-col items-center gap-1 transition-colors ${
             pathname === item.href ? 'text-secondary' : 'text-on-surface'
           }`}

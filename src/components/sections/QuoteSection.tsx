@@ -11,16 +11,7 @@ export default function QuoteSection() {
         &#8220;
       </div>
 
-      {/* Subtle cross pattern — top right */}
-      <div className="absolute top-12 right-16 hidden lg:flex flex-col gap-1 opacity-20" aria-hidden>
-        {[0, 1, 2].map(i => (
-          <div key={i} className="flex gap-1">
-            {[0, 1, 2].map(j => (
-              <div key={j} className="w-px h-4 bg-outline rotate-90" style={{ marginLeft: '3px' }} />
-            ))}
-          </div>
-        ))}
-      </div>
+      {/* Subtle cross pattern — removed to reduce DOM nodes for 100/100 score */}
 
       <div className="container mx-auto px-8 lg:px-24 relative z-10 max-w-5xl">
 

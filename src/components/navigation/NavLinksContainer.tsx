@@ -36,6 +36,7 @@ export default function NavLinksContainer({
           <Link
             key={link.href}
             href={link.href}
+            prefetch={false}
             className={isActive ? activeClassName : inactiveClassName}
           >
             {link.label}

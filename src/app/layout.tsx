@@ -41,6 +41,8 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${newsreader.variable} ${manrope.variable}`}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Material Symbols — async loaded via vanilla JS so React's event system
             is bypassed entirely. React ignores string onLoad handlers (it only
             accepts functions), so the old print/onload trick never worked. */}
