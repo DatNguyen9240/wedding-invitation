@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
-  // reactCompiler disabled — its c() runtime adds ~100-200ms eval overhead during hydration
-  // for minimal memoization benefit on a mostly-Server-Component page.
-  // reactCompiler: true,
   // Remove X-Powered-By header from all responses (minor security + saves bytes)
   poweredByHeader: false,
   images: {
@@ -21,6 +19,38 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
   },
   experimental: {
+  },
+  // Support Turbopack resolving aliases for polyfill stripping.
+  // Using an absolute path ensures the bundler definitively resolves the no-op file.
+  // @ts-ignore - Turbopack config is valid in Next.js 16 despite potential @types/next lag
+  turbopack: {
+    resolveAlias: {
+      'core-js/modules/es.array.at': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.array.flat': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.array.flat-map': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.object.from-entries': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.object.has-own': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.string.trim-end': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.string.trim-start': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js-pure/modules/es.array.at': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js-pure/modules/es.array.flat': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js-pure/modules/es.array.flat-map': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js-pure/modules/es.object.from-entries': path.resolve(__dirname, 'scripts/no-op.js'),
+    },
+  },
+  // Webpack fallback to ensure consistent bundling for all build contexts
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'core-js/modules/es.array.at': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.array.flat': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.array.flat-map': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.object.from-entries': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.object.has-own': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.string.trim-end': path.resolve(__dirname, 'scripts/no-op.js'),
+      'core-js/modules/es.string.trim-start': path.resolve(__dirname, 'scripts/no-op.js'),
+    };
+    return config;
   },
 };
 
