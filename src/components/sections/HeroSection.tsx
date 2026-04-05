@@ -5,7 +5,7 @@ export default function HeroSection() {
       {/* Full-bleed cinematic background with safe fallback */}
       <div className="absolute inset-0 z-0 bg-primary/5">
         <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlqgtImn_YHkfQv0qg8Ff-kgaj1bZtvKhJH9-gnoVIbhOc2nBmg5MJD3U5JAMYdrh9QhYpILBMEI5dw9M1WkdY_WPgXMiHWAB8Pus-n6Mg-6cTVhTsezR01LjKZNtsrLFmFQlHuQVJGlaI9zpInhVRZPml-6O6Hm2rsoNhp41F01AEmKwn-pxTwUw5CM9YK0a37yFyzeCHOdpyWqF3_V3AXvq2z7X40NgURMxNSWm5bTZP-xSuaAqbuUG2rUF2kx7VfFjqlsVYJXfL"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlqgtImn_YHkfQv0qg8Ff-kgaj1bZtvKhJH9-gnoVIbhOc2nBmg5MJD3U5JAMYdrh9QhYpILBMEI5dw9M1WkdY_WPgXMiHWAB8Pus-n6Mg-6cTVhTsezR01LjKZNtsrLFmFQlHuQVJGlaI9zpInhVRZPml-6O6Hm2rsoNhp41F01AEmKwn-pxTwUw5CM9YK0a37yFyzeCHOdpyWqF3_V3AXvq2z7X40NgURMxNSWm5bTZP-xSuaAqbuUG2rUF2kx7VfFjqlsVYJXfL=w1920-v-rw"
           className="w-full h-full object-cover object-center transition-opacity duration-700"
           alt="Luxury wedding editorial"
           fetchPriority="high"
