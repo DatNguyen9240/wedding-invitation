@@ -20,11 +20,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  */
 const VARIANTS: Record<ButtonVariant, string> = {
   primary:
-    'inline-flex items-center justify-center bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed font-body font-bold tracking-[0.2em] uppercase hover:opacity-90 transition-opacity',
+    'inline-flex items-center justify-center bg-gradient-to-br from-primary to-primary-container text-on-primary-container font-body font-bold tracking-[0.2em] uppercase hover:opacity-90 transition-opacity',
   outline:
     'inline-flex items-center justify-center border border-secondary text-secondary font-body font-bold tracking-[0.2em] uppercase hover:bg-secondary/5 transition-colors',
   hero:
-    'inline-flex items-center gap-4 border-[0.5px] border-secondary text-secondary font-body uppercase tracking-[0.2em] hover:bg-secondary hover:text-on-secondary-fixed transition-all duration-500 group',
+    'inline-flex items-center gap-4 border-[0.5px] border-secondary text-secondary font-body uppercase tracking-[0.2em] hover:bg-secondary hover:text-on-secondary transition-all duration-500 group',
   ghost:
     'inline-flex items-center gap-4 text-primary font-body uppercase tracking-widest hover:opacity-70 transition-opacity',
   small:
