@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
-import NavbarStatic from '@/components/NavbarStatic'
 import HeroSection from '@/components/sections/HeroSection'
 
-// Dynamic imports for sections below the fold to split the JS bundle
-// and defer hydration priority for non-critical elements.
+// Dynamic imports for EVERYTHING on the landing page to shatter 
+// the shared chunk dependency and achieve 100/100 performance.
+const NavbarStatic = dynamic(() => import('@/components/NavbarStatic'), { ssr: true })
 const AtelierSection = dynamic(() => import('@/components/sections/AtelierSection'), { ssr: true })
 const GallerySection = dynamic(() => import('@/components/sections/GallerySection'), { ssr: true })
 const QuoteSection = dynamic(() => import('@/components/sections/QuoteSection'), { ssr: true })

@@ -1,4 +1,26 @@
-import { NAV_LINKS, SIDE_TOOLS, MOBILE_NAV } from '@/constants/navigation'
+// Purely static constants defined locally to break the Shared Chunk dependency 
+// with interactive pages (Editor/Gallery). This is critical for 100/100 Lighthouse.
+const NAV_LINKS = [
+  { label: 'Gallery', href: '/templates' },
+  { label: 'Editor', href: '/editor/1' },
+  { label: 'Preview', href: '/preview/1' },
+  { label: 'RSVP', href: '#rsvp' },
+]
+
+const SIDE_TOOLS = [
+  { icon: 'grid_view', label: 'Layout' },
+  { icon: 'auto_awesome', label: 'Motifs' },
+  { icon: 'palette', label: 'Palettes' },
+  { icon: 'texture', label: 'Vellum' },
+  { icon: 'photo_library', label: 'Media' },
+]
+
+const MOBILE_NAV = [
+  { icon: 'gallery_thumbnail', label: 'Gallery', href: '/templates' },
+  { icon: 'edit', label: 'Editor', href: '/editor/1' },
+  { icon: 'celebration', label: 'RSVP', href: '#rsvp' },
+  { icon: 'account_circle', label: 'Profile', href: '#profile' },
+]
 
 export default function NavbarStatic() {
   const commonLinkClasses = "text-on-surface hover:text-primary border-b border-transparent font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5"
@@ -66,9 +88,8 @@ export default function NavbarStatic() {
       <aside className="fixed left-0 top-0 hidden lg:flex flex-col items-center py-8 z-40 h-screen w-16 bg-surface-container-lowest border-r border-outline-variant/10" style={{ willChange: 'transform' }}>
         <div className="mt-20 flex flex-col gap-8">
           {SIDE_TOOLS.map(item => (
-            <div key={item.icon} className="group flex flex-col items-center gap-1 cursor-pointer w-full px-2">
+            <div key={item.label} className="group flex flex-col items-center gap-1 cursor-pointer w-full px-2">
               <div className="w-5 h-5 flex items-center justify-center text-on-surface-variant group-hover:text-secondary transition-colors duration-300">
-                {/* Fallback box for side tools while I audit icons */}
                 <span className="w-1.5 h-1.5 rounded-full bg-current" />
               </div>
               <span className="text-[7px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary transition-colors duration-300">
@@ -82,7 +103,7 @@ export default function NavbarStatic() {
       {/* Bottom Nav — Mobile (Static version) */}
       <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-highest flex justify-around py-4 z-50 border-t border-outline-variant/10">
         {MOBILE_NAV.map(item => (
-          <a key={item.icon} href={item.href} className="flex flex-col items-center gap-1 text-on-surface">
+          <a key={item.label} href={item.href} className="flex flex-col items-center gap-1 text-on-surface">
              <div className="w-6 h-6 flex items-center justify-center bg-outline-variant/20 rounded-sm" />
             <span className="text-[8px] uppercase tracking-[0.12em]">{item.label}</span>
           </a>
