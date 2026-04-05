@@ -1,5 +1,6 @@
 import { use } from 'react'
 import Image from 'next/image'
+import { ThemeProvider } from '@/context/ThemeContext'
 import Navbar from '@/components/Navbar'
 import FooterShared from '@/components/FooterShared'
 import Button from '@/components/ui/Button'
@@ -9,7 +10,8 @@ export default function PreviewPage({ params }: { params: Promise<{ id: string }
   const { id } = use(params)
 
   return (
-    <>
+    <ThemeProvider>
+      <>
       <Navbar />
 
       <main className="min-h-screen pt-14 lg:pl-16">
@@ -244,6 +246,7 @@ export default function PreviewPage({ params }: { params: Promise<{ id: string }
       </div>
 
       <FooterShared variant="minimal" />
-    </>
+      </>
+    </ThemeProvider>
   )
 }

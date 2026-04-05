@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { use, useState } from 'react'
 import Link from 'next/link'
+import { ThemeProvider } from '@/context/ThemeContext'
 import Button from '@/components/ui/Button'
 import Label from '@/components/ui/Label'
 import IconButton from '@/components/ui/IconButton'
@@ -28,7 +29,8 @@ export default function EditorPage({ params }: { params: Promise<{ id: string }>
   const [activeCorner, setActiveCorner] = useState('Sharp')
 
   return (
-    <div className="flex h-screen overflow-hidden bg-surface-container-lowest text-on-surface">
+    <ThemeProvider>
+      <div className="flex h-screen overflow-hidden bg-surface-container-lowest text-on-surface">
 
       {/* ── LEFT SIDEBAR ──────────────────────────────── */}
       <nav className="fixed left-0 top-0 z-40 h-screen w-14 flex flex-col items-center bg-surface border-r border-outline-variant/10">
@@ -374,5 +376,6 @@ export default function EditorPage({ params }: { params: Promise<{ id: string }>
         </div>
       </aside>
     </div>
+    </ThemeProvider>
   )
 }

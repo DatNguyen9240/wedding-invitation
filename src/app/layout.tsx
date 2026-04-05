@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Newsreader, Manrope } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/context/ThemeContext'
 
 const newsreader = Newsreader({
   subsets: ['latin'],
@@ -80,9 +79,7 @@ export default function RootLayout({
       </head>
       {/* No global transition on body to prevent 'Style & Layout' recalculation spikes during hydration */}
       <body className="bg-background text-on-background selection:bg-secondary/30 antialiased">
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   )

@@ -1,6 +1,7 @@
 // Server Component — no 'use client'. Only the interactive sub-components are client-side.
 // This lets Next.js stream the editorial header as static HTML before JS loads,
 // improving FCP and reducing the JS bundle size for the /templates route.
+import { ThemeProvider } from '@/context/ThemeContext'
 import Navbar from '@/components/Navbar'
 import FooterShared from '@/components/FooterShared'
 import TemplateCarousel from './_carousel'
@@ -14,7 +15,7 @@ export const metadata = {
 
 export default function TemplatesPage() {
   return (
-    <>
+    <ThemeProvider>
       <Navbar />
       <main className="min-h-screen pt-14 lg:pl-16">
 
@@ -46,6 +47,6 @@ export default function TemplatesPage() {
       </main>
 
       <FooterShared variant="full" />
-    </>
+    </ThemeProvider>
   )
 }

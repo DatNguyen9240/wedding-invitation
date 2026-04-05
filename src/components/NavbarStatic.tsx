@@ -1,4 +1,3 @@
-import NavbarActions from '@/components/navigation/NavbarActions'
 import { NAV_LINKS, SIDE_TOOLS, MOBILE_NAV } from '@/constants/navigation'
 
 export default function NavbarStatic() {
@@ -13,7 +12,7 @@ export default function NavbarStatic() {
             Eternal Bloom
           </a>
 
-          {/* Nav links — desktop (Static version using <a> to avoid router bundle) */}
+          {/* Nav links — desktop */}
           <div className="hidden md:flex gap-10">
             {NAV_LINKS.map(link => (
               <a key={link.href} href={link.href} className={commonLinkClasses}>
@@ -22,8 +21,40 @@ export default function NavbarStatic() {
             ))}
           </div>
 
-          {/* Actions */}
-          <NavbarActions />
+          {/* Actions — Purely static & Vanilla JS to avoid any Hydration overhead */}
+          <div className="flex items-center gap-5">
+            {/* Vanilla JS Theme Toggle — Zero React Hydration overhead */}
+            <button
+              id="theme-toggle-btn"
+              aria-label="Toggle theme"
+              className="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-secondary/10 transition-colors duration-300"
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>contrast</span>
+            </button>
+
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `(function(){
+                  var b=document.getElementById('theme-toggle-btn');
+                  if(b) b.onclick=function(){
+                    var d=document.documentElement;
+                    var t=d.getAttribute('data-theme')==='pink'?'default':'pink';
+                    d.setAttribute('data-theme',t);
+                    localStorage.setItem('eb-theme',t);
+                  };
+                })();`,
+              }}
+            />
+
+            {/* Static Account link */}
+            <a
+              href="/account"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-outline-variant/30 hover:border-secondary transition-colors group"
+            >
+              <span className="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-secondary">account_circle</span>
+              <span className="text-[10px] font-body uppercase tracking-wider text-on-surface-variant group-hover:text-secondary hidden sm:inline">Account</span>
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -43,7 +74,7 @@ export default function NavbarStatic() {
         </div>
       </aside>
 
-      {/* Bottom Nav — Mobile (Static version using <a>) */}
+      {/* Bottom Nav — Mobile (Static version) */}
       <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-highest flex justify-around py-4 z-50 border-t border-outline-variant/10">
         {MOBILE_NAV.map(item => (
           <a key={item.icon} href={item.href} className="flex flex-col items-center gap-1 text-on-surface">
