@@ -25,6 +25,26 @@ const nextConfig: NextConfig = {
     // CSS network round-trip (~10.8 KiB, 300ms). This removes the CSS node from
     inlineCss: true,
   },
+  // Support Turbopack resolving aliases for polyfill stripping.
+  // In Next.js 16, this is a top-level property.
+  // @ts-ignore - Turbopack config is valid in Next.js 16 despite potential @types/next lag
+  turbopack: {
+    resolveAlias: {
+      'core-js/modules/es.array.at': './scripts/no-op.js',
+      'core-js/modules/es.array.flat': './scripts/no-op.js',
+      'core-js/modules/es.array.flat-map': './scripts/no-op.js',
+      'core-js/modules/es.object.from-entries': './scripts/no-op.js',
+      'core-js/modules/es.object.has-own': './scripts/no-op.js',
+      'core-js/modules/es.string.trim-end': './scripts/no-op.js',
+      'core-js/modules/es.string.trim-start': './scripts/no-op.js',
+      'core-js-pure/modules/es.array.at': './scripts/no-op.js',
+      'core-js-pure/modules/es.array.flat': './scripts/no-op.js',
+      'core-js-pure/modules/es.array.flat-map': './scripts/no-op.js',
+      'core-js-pure/modules/es.object.from-entries': './scripts/no-op.js',
+      'core-js/stable/array/at': './scripts/no-op.js',
+      'core-js/stable/object/from-entries': './scripts/no-op.js',
+    },
+  },
   // Use Webpack overrides to strip internal legacy polyfills
   webpack: (config) => {
     // Alias both core-js and core-js-pure variants identified in Lighthouse
