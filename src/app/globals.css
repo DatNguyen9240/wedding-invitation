@@ -151,9 +151,7 @@
   /* Editor canvas — dot grid like a design tool */
   .bg-canvas {
     background-color: var(--color-surface-container-lowest);
-    background-image: radial-gradient(circle,
-        color-mix(in srgb, var(--color-outline-variant) 70%, transparent) 1px,
-        transparent 1px);
+    background-image: radial-gradient(circle, var(--color-outline-variant) 1px, transparent 1px);
     background-size: 22px 22px;
   }
 

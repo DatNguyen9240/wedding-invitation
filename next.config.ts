@@ -23,14 +23,11 @@ const nextConfig: NextConfig = {
   experimental: {
     // Inline critical CSS into the HTML response, eliminating the render-blocking
     // CSS network round-trip (~10.8 KiB, 300ms). This removes the CSS node from
-    // the "Network dependency tree" chain, dropping critical path to ~TTFB only.
     inlineCss: true,
   },
-  // Use Webpack overrides to strip internal Next.js legacy polyfills
+  // Use Webpack overrides to strip internal legacy polyfills
   webpack: (config) => {
-    // Alias the legacy core-js features that Lighthouse identifies as "Legacy JavaScript"
-    // (Array.at, Object.hasOwn, String.trimEnd, etc). For a premium modern app,
-    // we drop 13.6 KiB of redundant polyfills for the ~0.2% of users on IE11/Edge 18.
+    // Alias both core-js and core-js-pure variants identified in Lighthouse
     config.resolve.alias = {
       ...config.resolve.alias,
       'core-js/modules/es.array.at': './scripts/no-op.js',
@@ -40,6 +37,8 @@ const nextConfig: NextConfig = {
       'core-js/modules/es.object.has-own': './scripts/no-op.js',
       'core-js/modules/es.array.flat': './scripts/no-op.js',
       'core-js/modules/es.array.flat-map': './scripts/no-op.js',
+      // Catch core-js-pure used by Babel runtime
+      'core-js-pure/modules/es.array.at': './scripts/no-op.js',
     };
     return config;
   },

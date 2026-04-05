@@ -1,13 +1,8 @@
-# Target evergreen browsers — eliminates ALL listed polyfills on production build.
-# Floors align with "Baseline 2021" (all features natively supported):
-#   Array.prototype.at      → Chrome 92, Safari 15.4, Firefox 90
-#   Object.hasOwn           → Chrome 93, Safari 15.4, Firefox 92
-#   Array.flat/flatMap      → Chrome 69 (already covered)
-#   Object.fromEntries      → Chrome 73 (already covered)
-#   String.trimStart/End    → Chrome 66 (already covered)
-chrome >= 93
-edge >= 93
-safari >= 15.4
-firefox >= 93
-not dead
+# Target modern evergreen browsers to eliminate legacy polyfills (Array.at, etc.)
+# This matches the project's premium target demographic.
+Chrome >= 95
+Safari >= 15.4
+Firefox >= 95
+Edge >= 95
 not IE 11
+not dead
