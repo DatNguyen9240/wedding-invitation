@@ -3,33 +3,11 @@ import ThemeToggle from '@/components/ui/ThemeToggle'
 import NavLink from '@/components/ui/NavLink'
 import MobileNav from '@/components/navigation/MobileNav'
 import AccountButton from '@/components/navigation/AccountButton'
-
-const NAV_LINKS = [
-  { label: 'Gallery', href: '/templates' },
-  { label: 'Editor', href: '/editor/1' },
-  { label: 'Preview', href: '/preview/1' },
-  { label: 'RSVP', href: '#rsvp' },
-]
-
-const SIDE_TOOLS = [
-  { icon: 'grid_view', label: 'Layout' },
-  { icon: 'auto_awesome', label: 'Motifs' },
-  { icon: 'palette', label: 'Palettes' },
-  { icon: 'texture', label: 'Vellum' },
-  { icon: 'photo_library', label: 'Media' },
-]
-
-const MOBILE_NAV = [
-  { icon: 'gallery_thumbnail', label: 'Gallery', href: '/templates' },
-  { icon: 'edit', label: 'Editor', href: '/editor/1' },
-  { icon: 'celebration', label: 'RSVP', href: '#rsvp' },
-  { icon: 'account_circle', label: 'Profile', href: '#profile' },
-]
+import { NAV_LINKS, SIDE_TOOLS, MOBILE_NAV } from '@/constants/navigation'
 
 export default function Navbar() {
   return (
     <>
-      {/* Top Navigation — Server Component by default */}
       <nav className="fixed top-0 w-full z-50 glass-header border-b border-outline-variant/15">
         <div className="flex justify-between items-center px-8 lg:px-12 py-5">
 

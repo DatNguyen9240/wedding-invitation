@@ -30,15 +30,24 @@ const nextConfig: NextConfig = {
     // Alias both core-js and core-js-pure variants identified in Lighthouse
     config.resolve.alias = {
       ...config.resolve.alias,
+      // Catch specific modules in core-js/modules/...
       'core-js/modules/es.array.at': './scripts/no-op.js',
-      'core-js/modules/es.object.from-entries': './scripts/no-op.js',
-      'core-js/modules/es.string.trim-end': './scripts/no-op.js',
-      'core-js/modules/es.string.trim-start': './scripts/no-op.js',
-      'core-js/modules/es.object.has-own': './scripts/no-op.js',
       'core-js/modules/es.array.flat': './scripts/no-op.js',
       'core-js/modules/es.array.flat-map': './scripts/no-op.js',
-      // Catch core-js-pure used by Babel runtime
+      'core-js/modules/es.object.from-entries': './scripts/no-op.js',
+      'core-js/modules/es.object.has-own': './scripts/no-op.js',
+      'core-js/modules/es.string.trim-end': './scripts/no-op.js',
+      'core-js/modules/es.string.trim-start': './scripts/no-op.js',
+      
+      // Catch core-js-pure used by Babel/Webpack polyfill plugins
       'core-js-pure/modules/es.array.at': './scripts/no-op.js',
+      'core-js-pure/modules/es.array.flat': './scripts/no-op.js',
+      'core-js-pure/modules/es.array.flat-map': './scripts/no-op.js',
+      'core-js-pure/modules/es.object.from-entries': './scripts/no-op.js',
+      
+      // Catch root-level polyfill imports
+      'core-js/stable/array/at': './scripts/no-op.js',
+      'core-js/stable/object/from-entries': './scripts/no-op.js',
     };
     return config;
   },

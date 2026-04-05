@@ -21,15 +21,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // We only need to sync React state — NOT mutate the DOM again (that causes a forced reflow).
   useEffect(() => {
     const saved = localStorage.getItem('eb-theme') as Theme | null
-    const currentAttr = document.documentElement.getAttribute('data-theme')
-
     if (saved === 'pink' || saved === 'dark') {
-      // DOM already correct from inline script — just sync React state
       setTheme(saved)
-      // Only apply() if somehow the DOM disagrees (e.g. stale inline script)
-      if ((saved === 'pink') !== (currentAttr === 'pink')) {
-        apply(saved)
-      }
     }
   }, [])
 

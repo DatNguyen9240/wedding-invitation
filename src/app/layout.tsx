@@ -18,7 +18,8 @@ const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-manrope',
   display: 'optional',
-  weight: ['200', '300', '400', '500', '600', '700', '800'],
+  // Pruned to used weights: 200 (extra-light), 400 (regular), 600 (semi-bold), 800 (extra-bold)
+  weight: ['200', '400', '600', '800'],
 })
 
 export const metadata: Metadata = {
