@@ -72,6 +72,9 @@ export default function AtelierSection() {
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9IJ92MUaFf50YGENjZeVGSRMAr6NAqjmHhUsv3lq8w56h1fV5HxSyeX9N7Uk8CuLT_xcsrEshxIhHG0tyLoqmYtwFjPhad48j9avktBgPlyVZ_kI-LbB8Pr9XyOU2TGdo7O320IRiC5jRpvwfN_VVZ5UyL221ROCIeu73-nudrB56BwX5YiCY1079iACbP2mpuM4y_lukK3biUMXW3_4ChSGYQKalOnngx_HBxtQS1O3dRt51FYvAuxi8T_aaP4ZUstffIaWw4BOn"
                 alt="Artist workspace with ink pots and paper samples"
                 sizes="(min-width:1024px) 40vw, 100vw"
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
               />
               {/* Overlay gradient bottom */}
               <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent" />
