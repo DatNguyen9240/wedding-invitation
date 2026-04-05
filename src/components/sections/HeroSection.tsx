@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Button from '@/components/ui/Button'
 
 export default function HeroSection() {
   return (
@@ -57,10 +56,13 @@ export default function HeroSection() {
 
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-end gap-8 sm:gap-16">
-          <Button variant="hero" href="/templates" className="px-8 py-4 text-[11px]">
+          <a
+            href="/templates"
+            className="inline-flex items-center gap-4 border-[0.5px] border-secondary text-secondary font-body uppercase tracking-[0.2em] hover:bg-secondary hover:text-on-secondary transition-all duration-500 group px-8 py-4 text-[11px]"
+          >
             Explore the Collection
             <span className="transition-transform duration-300 group-hover:translate-x-2 inline-block">→</span>
-          </Button>
+          </a>
 
           <div className="hidden md:flex gap-10">
             {[

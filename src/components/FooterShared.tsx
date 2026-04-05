@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Input from '@/components/ui/Input'
 
 interface FooterSharedProps {
@@ -44,13 +43,13 @@ export default function FooterShared({ variant = 'full' }: FooterSharedProps) {
           <h3 className="font-serif text-base text-secondary italic">The Atelier</h3>
           <nav className="space-y-3">
             {['Collections', 'Custom Motifs', 'Brand Story', 'Sustainability'].map(l => (
-              <Link
-                key={l}
-                href="#"
-                className="block font-body text-xs text-on-surface hover:text-secondary transition-colors uppercase tracking-wider"
-              >
-                {l}
-              </Link>
+          <a
+            key={l}
+            href="#"
+            className="block font-body text-xs text-on-surface hover:text-secondary transition-colors uppercase tracking-wider"
+          >
+            {l}
+          </a>
             ))}
           </nav>
         </div>
@@ -59,13 +58,13 @@ export default function FooterShared({ variant = 'full' }: FooterSharedProps) {
           <h3 className="font-serif text-base text-secondary italic">Connect</h3>
           <nav className="space-y-3">
             {['Instagram', 'Pinterest', 'Journal', 'Inquiries'].map(l => (
-              <Link
-                key={l}
-                href="#"
-                className="block font-body text-xs text-on-surface hover:text-secondary transition-colors uppercase tracking-wider"
-              >
-                {l}
-              </Link>
+          <a
+            key={l}
+            href="#"
+            className="block font-body text-xs text-on-surface hover:text-secondary transition-colors uppercase tracking-wider"
+          >
+            {l}
+          </a>
             ))}
           </nav>
         </div>

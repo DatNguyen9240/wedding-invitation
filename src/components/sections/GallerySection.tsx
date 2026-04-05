@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 interface CardProps {
   src: string
@@ -51,12 +50,12 @@ function TemplateCard({ src, alt, name, subtitle, index, aspect, badge, sizes = 
 
         {/* Hover: discover CTA line */}
         <div className="absolute top-5 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
-          <Link
+          <a
             href="/templates"
             className="font-body text-[9px] uppercase tracking-widest text-primary border border-primary/50 px-3 py-1.5 hover:bg-primary hover:text-on-primary transition-colors duration-300"
           >
             Select
-          </Link>
+          </a>
         </div>
       </div>
     </div>
@@ -109,12 +108,12 @@ export default function GallerySection() {
               <span className="italic font-extralight">Collection</span>
             </h2>
           </div>
-          <Link
+          <a
             href="/templates"
             className="hidden md:flex items-center gap-3 font-body text-[10px] uppercase tracking-widest text-on-surface hover:text-primary transition-colors pb-1 border-b border-transparent hover:border-primary"
           >
             View All <span>→</span>
-          </Link>
+          </a>
         </div>
 
         {/* Asymmetric Grid */}
@@ -133,12 +132,12 @@ export default function GallerySection() {
 
         {/* Bottom CTA on mobile */}
         <div className="md:hidden mt-10 text-center">
-          <Link
+          <a
             href="/templates"
             className="font-body text-[10px] uppercase tracking-widest text-secondary border-b border-secondary pb-1"
           >
             View All Designs →
-          </Link>
+          </a>
         </div>
       </div>
     </section>

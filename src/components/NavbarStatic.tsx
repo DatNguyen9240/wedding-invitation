@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 import AccountButton from '@/components/navigation/AccountButton'
 import { NAV_LINKS, SIDE_TOOLS, MOBILE_NAV } from '@/constants/navigation'
@@ -11,9 +10,9 @@ export default function NavbarStatic() {
       <nav className="fixed top-0 w-full z-50 glass-header border-b border-outline-variant/15">
         <div className="flex justify-between items-center px-8 lg:px-12 py-5">
           {/* Brand */}
-          <Link href="/" className="font-serif italic text-xl text-on-surface hover:text-primary transition-colors duration-300">
+          <a href="/" className="font-serif italic text-xl text-on-surface hover:text-primary transition-colors duration-300">
             Eternal Bloom
-          </Link>
+          </a>
 
           {/* Nav links — desktop (Static version using <a> to avoid router bundle) */}
           <div className="hidden md:flex gap-10">
