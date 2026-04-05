@@ -40,8 +40,8 @@
   --color-error: #ffb4ab;
 
   /* Typography */
-  --font-serif: var(--font-newsreader), Georgia, serif;
-  --font-body: var(--font-manrope), system-ui, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
 
   /* Border Radius — sharp editorial */
   --radius: 0px;

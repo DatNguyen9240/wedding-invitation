@@ -1,25 +1,5 @@
 import type { Metadata } from 'next'
-import { Newsreader, Manrope } from 'next/font/google'
 import './globals.css'
-
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  variable: '--font-newsreader',
-  // 'swap' lets the h1 render immediately with a fallback font, then swaps to Newsreader.
-  // 'optional' can suppress the swap entirely if the font is slow — bad for LCP.
-  display: 'swap',
-  style: ['normal', 'italic'],
-  // Only weights actually used — 200 (font-extralight), 400 (regular), 700 (heading bold default)
-  weight: ['200', '400', '700'],
-})
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  variable: '--font-manrope',
-  display: 'swap',
-  // Pruned to used weights: 200 (extra-light), 400 (regular), 600 (semi-bold), 800 (extra-bold)
-  weight: ['200', '400', '600', '800'],
-})
 
 export const metadata: Metadata = {
   title: 'Eternal Bloom — Thiệp Cưới Thông Minh',
@@ -38,10 +18,18 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="vi" className={`${newsreader.variable} ${manrope.variable}`}>
+    <html lang="vi">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/*
+           Absolute Performance: Load fonts via static HTML link and preconnect 
+           to kill the Next.js Font JS runtime (~5KB savings).
+        */}
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,400;0,6..72,700;1,6..72,200;1,6..72,400;1,6..72,700&display=swap" 
+          rel="stylesheet" 
+        />
         {/*
            Critical: Inline script to set theme before first paint.
            This prevents the "forced reflow" and "flash" during hydration.
