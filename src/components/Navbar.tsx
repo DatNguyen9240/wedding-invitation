@@ -1,8 +1,8 @@
-'use client'
-
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import ThemeToggle from '@/components/ui/ThemeToggle'
+import NavLink from '@/components/ui/NavLink'
+import MobileNav from '@/components/navigation/MobileNav'
+import AccountButton from '@/components/navigation/AccountButton'
 
 const NAV_LINKS = [
   { label: 'Gallery', href: '/templates' },
@@ -27,11 +27,9 @@ const MOBILE_NAV = [
 ]
 
 export default function Navbar() {
-  const pathname = usePathname()
-
   return (
     <>
-      {/* Top Navigation */}
+      {/* Top Navigation — Server Component by default */}
       <nav className="fixed top-0 w-full z-50 glass-header border-b border-outline-variant/15">
         <div className="flex justify-between items-center px-8 lg:px-12 py-5">
 
@@ -43,42 +41,29 @@ export default function Navbar() {
             Eternal Bloom
           </Link>
 
-          {/* Nav links — desktop */}
+          {/* Nav links — desktop (using NavLink client islands) */}
           <div className="hidden md:flex gap-10">
-            {NAV_LINKS.map(link => {
-              const isActive = pathname === link.href
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5 ${
-                    isActive
-                      ? 'text-primary border-b border-primary'
-                      : 'text-on-surface hover:text-primary border-b border-transparent'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              )
-            })}
+            {NAV_LINKS.map(link => (
+              <NavLink
+                key={link.href}
+                href={link.href}
+                label={link.label}
+                className="font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5"
+                activeClassName="text-primary border-b border-primary"
+                inactiveClassName="text-on-surface hover:text-primary border-b border-transparent"
+              />
+            ))}
           </div>
 
-          {/* Actions */}
+          {/* Actions (using dedicated client islands) */}
           <div className="flex items-center gap-5">
             <ThemeToggle />
-            <button
-              className="flex items-center justify-center p-2 rounded-full border border-outline-variant/30 text-on-surface hover:bg-secondary/10 hover:text-secondary transition-all duration-300"
-              aria-label="Account / Profile"
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
-                account_circle
-              </span>
-            </button>
+            <AccountButton />
           </div>
         </div>
       </nav>
 
-      {/* Side Navigation — Desktop only */}
+      {/* Side Navigation — Desktop only (Purely static, no hydration!) */}
       <aside className="fixed left-0 top-0 hidden lg:flex flex-col items-center py-8 z-40 h-screen w-16 bg-surface-container-lowest/80 backdrop-blur-md border-r border-outline-variant/10" style={{ willChange: 'transform' }}>
         <div className="mt-20 flex flex-col gap-8">
           {SIDE_TOOLS.map(item => (
@@ -100,23 +85,8 @@ export default function Navbar() {
         </div>
       </aside>
 
-      {/* Bottom Nav — Mobile */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-highest/90 backdrop-blur-lg flex justify-around py-4 z-50 border-t border-outline-variant/10" style={{ willChange: 'transform' }}>
-        {MOBILE_NAV.map(item => (
-          <Link
-            key={item.icon}
-            href={item.href}
-            className={`flex flex-col items-center gap-1 transition-colors ${
-              pathname === item.href ? 'text-secondary' : 'text-on-surface'
-            }`}
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
-              {item.icon}
-            </span>
-            <span className="text-[8px] uppercase tracking-[0.12em]">{item.label}</span>
-          </Link>
-        ))}
-      </nav>
+      {/* Bottom Nav — Mobile (Island) */}
+      <MobileNav items={MOBILE_NAV} />
     </>
   )
 }

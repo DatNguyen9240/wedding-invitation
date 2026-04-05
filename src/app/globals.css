@@ -132,11 +132,12 @@
 /* ===== Components ===== */
 @layer components {
   .glass-header {
-    background: color-mix(in srgb, var(--color-background) 75%, transparent);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    /* Pre-allocate a compositor layer so scrolling doesn't trigger a repaint */
-    will-change: transform;
+    background: var(--color-surface-container);
+    opacity: 0.94;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* Pre-allocate a compositor layer to reduce 'Style & Layout' recalculations during scroll */
+    will-change: transform, opacity;
   }
 
   .muse-mask {
@@ -188,7 +189,8 @@
     content: attr(data-text);
     font-family: var(--font-newsreader), serif;
     line-height: 1;
-    color: color-mix(in srgb, var(--color-on-surface-variant) 5%, transparent);
+    color: var(--color-on-surface-variant);
+    opacity: 0.05;
     white-space: nowrap;
     display: block;
     pointer-events: none;

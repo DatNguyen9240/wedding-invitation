@@ -62,7 +62,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-background text-on-background selection:bg-secondary/30 antialiased transition-colors duration-500">
+      {/* No global transition on body to prevent 'Style & Layout' recalculation spikes during hydration */}
+      <body className="bg-background text-on-background selection:bg-secondary/30 antialiased">
         <ThemeProvider>
           {children}
         </ThemeProvider>
