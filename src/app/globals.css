@@ -152,7 +152,6 @@
   /* Ticker strip */
   .animate-ticker {
     display: flex;
-    width: max-content;
     animation: ticker 30s linear infinite;
     /* Optimization: Isolate animation to its own box to prevent layout-affecting changes */
     contain: strict;

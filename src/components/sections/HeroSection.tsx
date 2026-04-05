@@ -79,19 +79,19 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Ticker strip — 2 copies is the minimum for a seamless translateX(-50%) loop */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-outline-variant/20 overflow-hidden bg-surface-container-lowest">
-        <div className="animate-ticker py-3" style={{ willChange: 'transform' }}>
-          {[0, 1].map((i) => (
-            <span
-              key={i}
-              className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/70 whitespace-nowrap pr-20"
-            >
-              Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
-              Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
-              Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
-            </span>
-          ))}
+      {/* Ticker strip — Refactored to avoid 'max-content' forced reflow */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-outline-variant/20 overflow-hidden bg-surface-container-lowest h-12">
+        <div className="flex animate-ticker w-[200%] py-3 h-full items-center" style={{ willChange: 'transform' }}>
+          <div className="flex-none whitespace-nowrap px-4 font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/70">
+            Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
+            Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
+            Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
+          </div>
+          <div className="flex-none whitespace-nowrap px-4 font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant/70">
+            Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
+            Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
+            Eternal Bloom ✦ Wedding Invitations ✦ The Digital Atelier ✦&nbsp;&nbsp;
+          </div>
         </div>
       </div>
     </section>
