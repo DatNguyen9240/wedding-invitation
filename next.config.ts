@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactCompiler: true,
+  // reactCompiler disabled — its c() runtime adds ~100-200ms eval overhead during hydration
+  // for minimal memoization benefit on a mostly-Server-Component page.
+  // reactCompiler: true,
   // Remove X-Powered-By header from all responses (minor security + saves bytes)
   poweredByHeader: false,
   images: {
