@@ -13,7 +13,7 @@ export default function MobileNav({ items }: { items: MobileNavItem[] }) {
   const pathname = usePathname()
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-highest/90 backdrop-blur-lg flex justify-around py-4 z-50 border-t border-outline-variant/10" style={{ willChange: 'transform' }}>
+    <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-highest flex justify-around py-4 z-50 border-t border-outline-variant/10" style={{ willChange: 'transform' }}>
       {items.map(item => (
         <Link
           key={item.icon}

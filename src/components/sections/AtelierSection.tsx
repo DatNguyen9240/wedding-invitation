@@ -81,7 +81,7 @@ export default function AtelierSection() {
             </div>
 
             {/* Floating label card */}
-            <div className="absolute -bottom-6 -right-6 lg:-right-10 border border-outline-variant/30 p-6 bg-surface-container backdrop-blur-sm">
+            <div className="absolute -bottom-6 -right-6 lg:-right-10 border border-outline-variant/30 p-6 bg-surface-container">
               <div className="font-body text-[9px] uppercase tracking-[0.4em] text-secondary mb-2">Est. 2026</div>
               <div className="font-serif text-lg text-on-surface">Editorial · Digital · Timeless</div>
             </div>

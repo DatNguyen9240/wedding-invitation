@@ -42,7 +42,7 @@ export default function Navbar() {
       </nav>
 
       {/* Side Navigation — Desktop only (Purely static, no hydration!) */}
-      <aside className="fixed left-0 top-0 hidden lg:flex flex-col items-center py-8 z-40 h-screen w-16 bg-surface-container-lowest/80 backdrop-blur-md border-r border-outline-variant/10" style={{ willChange: 'transform' }}>
+      <aside className="fixed left-0 top-0 hidden lg:flex flex-col items-center py-8 z-40 h-screen w-16 bg-surface-container-lowest border-r border-outline-variant/10" style={{ willChange: 'transform' }}>
         <div className="mt-20 flex flex-col gap-8">
           {SIDE_TOOLS.map(item => (
             <div

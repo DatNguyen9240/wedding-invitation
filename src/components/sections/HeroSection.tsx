@@ -21,7 +21,7 @@ export default function HeroSection() {
 
       {/* Floating editorial badge — top right */}
       <div className="absolute top-28 right-8 lg:right-16 z-20 hidden lg:block">
-        <div className="border border-outline-variant/40 p-6 text-center bg-surface-container/30 backdrop-blur-md">
+        <div className="border border-outline-variant/40 p-6 text-center bg-surface-container">
           <div className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant mb-3">
             The Collection
           </div>
@@ -76,7 +76,7 @@ export default function HeroSection() {
       </div>
 
       {/* Ticker strip — 2 copies is the minimum for a seamless translateX(-50%) loop */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-outline-variant/20 overflow-hidden bg-surface-container-lowest/60 backdrop-blur-sm">
+      <div className="absolute bottom-0 left-0 right-0 border-t border-outline-variant/20 overflow-hidden bg-surface-container-lowest">
         <div className="animate-ticker py-3">
           {[0, 1].map((i) => (
             <span
