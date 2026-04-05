@@ -90,7 +90,7 @@ const TEMPLATES = [
 
 export default function GallerySection() {
   return (
-    <section className="py-32 bg-surface">
+    <section className="py-32 bg-surface" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 0 1200px' }}>
       <div className="container mx-auto px-8 lg:px-16">
 
         {/* Editorial header */}

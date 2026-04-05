@@ -20,7 +20,7 @@ const FEATURES = [
 
 export default function AtelierSection() {
   return (
-    <section className="py-32 bg-surface-container-lowest">
+    <section className="py-32 bg-surface-container-lowest" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 0 900px' }}>
       <div className="container mx-auto px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-start">
 

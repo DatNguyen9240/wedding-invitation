@@ -1,6 +1,6 @@
 export default function QuoteSection() {
   return (
-    <section className="relative py-40 bg-surface overflow-hidden">
+    <section className="relative py-40 bg-surface overflow-hidden" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 0 700px' }}>
 
       {/* Giant decorative quotation mark — background element */}
       <div
