@@ -26,15 +26,20 @@ const nextConfig: NextConfig = {
     inlineCss: true,
   },
   // Use Webpack overrides to strip internal legacy polyfills
-  webpack: (config, { webpack }) => {
-    // Aggressively prevent ANY core-js or core-js-pure imports from entering the bundle.
-    // This is the most reliable way to reach a 100/100 performance score by removing 13.6 KiB of legacy code.
-    config.plugins.push(
-      new webpack.NormalModuleReplacementPlugin(
-        /^core-js(-pure)?/,
-        require.resolve('./scripts/no-op.js')
-      )
-    );
+  webpack: (config) => {
+    // Alias both core-js and core-js-pure variants identified in Lighthouse
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'core-js/modules/es.array.at': './scripts/no-op.js',
+      'core-js/modules/es.object.from-entries': './scripts/no-op.js',
+      'core-js/modules/es.string.trim-end': './scripts/no-op.js',
+      'core-js/modules/es.string.trim-start': './scripts/no-op.js',
+      'core-js/modules/es.object.has-own': './scripts/no-op.js',
+      'core-js/modules/es.array.flat': './scripts/no-op.js',
+      'core-js/modules/es.array.flat-map': './scripts/no-op.js',
+      // Catch core-js-pure used by Babel runtime
+      'core-js-pure/modules/es.array.at': './scripts/no-op.js',
+    };
     return config;
   },
 };
