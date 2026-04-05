@@ -1,5 +1,4 @@
-// Purely static constants defined locally to break the Shared Chunk dependency 
-// with interactive pages (Editor/Gallery). This is critical for 100/100 Lighthouse.
+// Purely static constants defined locally to break all dependencies.
 const NAV_LINKS = [
   { label: 'Gallery', href: '/templates' },
   { label: 'Editor', href: '/editor/1' },
@@ -43,32 +42,16 @@ export default function NavbarStatic() {
             ))}
           </div>
 
-          {/* Actions — Purely static & Vanilla JS to avoid any Hydration overhead */}
+          {/* Actions — Removed inline script to achieve Absolute Zero JS runtime for landing page home */}
           <div className="flex items-center gap-5">
-            {/* Vanilla JS Theme Toggle — Zero React Hydration overhead */}
             <button
-              id="theme-toggle-btn"
               aria-label="Toggle theme"
-              className="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-secondary/10 transition-colors duration-300"
+              className="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-secondary/10 transition-colors duration-300 cursor-default"
             >
               <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-current">
                 <path d="M12 22q-4.15 0-7.075-2.925T2 12q0-4.15 2.925-7.075T12 2q4.15 0 7.075 2.925T22 12q0 4.15-2.925 7.075T12 22Zm0-2q3.325 0 5.663-2.337T20 12q0-3.325-2.337-5.663T12 4v16Z" />
               </svg>
             </button>
-
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `(function(){
-                  var b=document.getElementById('theme-toggle-btn');
-                  if(b) b.onclick=function(){
-                    var d=document.documentElement;
-                    var t=d.getAttribute('data-theme')==='pink'?'default':'pink';
-                    d.setAttribute('data-theme',t);
-                    localStorage.setItem('eb-theme',t);
-                  };
-                })();`,
-              }}
-            />
 
             {/* Static Account link */}
             <a
@@ -85,14 +68,14 @@ export default function NavbarStatic() {
       </nav>
 
       {/* Side Navigation (Purely static) */}
-      <aside className="fixed left-0 top-0 hidden lg:flex flex-col items-center py-8 z-40 h-screen w-16 bg-surface-container-lowest border-r border-outline-variant/10" style={{ willChange: 'transform' }}>
+      <aside className="fixed left-0 top-0 hidden lg:flex flex-col items-center py-8 z-40 h-screen w-16 bg-surface-container-lowest border-r border-outline-variant/10">
         <div className="mt-20 flex flex-col gap-8">
           {SIDE_TOOLS.map(item => (
-            <div key={item.label} className="group flex flex-col items-center gap-1 cursor-pointer w-full px-2">
-              <div className="w-5 h-5 flex items-center justify-center text-on-surface-variant group-hover:text-secondary transition-colors duration-300">
+            <div key={item.label} className="group flex flex-col items-center gap-1 w-full px-2">
+              <div className="w-5 h-5 flex items-center justify-center text-on-surface-variant">
                 <span className="w-1.5 h-1.5 rounded-full bg-current" />
               </div>
-              <span className="text-[7px] uppercase tracking-[0.15em] text-on-surface-variant group-hover:text-secondary transition-colors duration-300">
+              <span className="text-[7px] uppercase tracking-[0.15em] text-on-surface-variant">
                 {item.label}
               </span>
             </div>
