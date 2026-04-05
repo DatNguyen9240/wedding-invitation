@@ -42,31 +42,6 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Material Symbols — async loaded via vanilla JS so React's event system
-            is bypassed entirely. React ignores string onLoad handlers (it only
-            accepts functions), so the old print/onload trick never worked. */}
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){
-  var l=document.createElement('link');
-  l.rel='stylesheet';
-  l.href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap';
-  l.media='print';
-  l.onload=function(){l.media='all';};
-  document.head.appendChild(l);
-})();`,
-          }}
-        />
-        <noscript>
-          {/* Fallback for no-JS: load synchronously */}
-          {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap"
-          />
-        </noscript>
-
         {/*
            Critical: Inline script to set theme before first paint.
            This prevents the "forced reflow" and "flash" during hydration.
