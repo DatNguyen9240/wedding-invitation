@@ -15,17 +15,15 @@ export default function HeroSection() {
           alt="Luxury wedding editorial photography"
           sizes="100vw"
         />
-        {/* Bottom vignette — strongest */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10 z-10" />
-        {/* Left vignette */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/20 to-transparent z-10" />
-        {/* Top vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-transparent z-10" style={{ height: '40%' }} />
+        {/* Vignette overlays — aria-hidden since they're purely decorative */}
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10 z-10" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/20 to-transparent z-10" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-background/60 to-transparent z-10" style={{ height: '40%' }} />
       </div>
 
-      {/* Floating editorial badge — top right */}
+      {/* Floating editorial badge — top right. Solid bg (no blur) saves a compositor layer. */}
       <div className="absolute top-28 right-8 lg:right-16 z-20 hidden lg:block">
-        <div className="border border-outline-variant/40 p-6 text-center bg-surface-container/30 backdrop-blur-md">
+        <div className="border border-outline-variant/40 p-6 text-center bg-surface-container/70">
           <div className="font-body text-[9px] uppercase tracking-[0.4em] text-on-surface-variant mb-3">
             The Collection
           </div>
@@ -79,8 +77,8 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Ticker strip — 2 copies is the minimum for a seamless translateX(-50%) loop */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-outline-variant/20 overflow-hidden bg-surface-container-lowest/60 backdrop-blur-sm">
+      {/* Ticker strip — 2 copies for seamless translateX(-50%) loop. No backdrop-filter saves a compositor layer. */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-outline-variant/20 overflow-hidden bg-surface-container-lowest/80">
         <div className="animate-ticker py-3">
           {[0, 1].map((i) => (
             <span
