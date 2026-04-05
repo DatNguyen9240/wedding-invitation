@@ -9,7 +9,9 @@ const MobileNav = dynamic(() => import('@/components/navigation/MobileNav'), {
   ssr: true,
 })
 
-export default function Navbar() {
+export default function Navbar({ isStatic = false }: { isStatic?: boolean }) {
+  const commonLinkClasses = "text-on-surface hover:text-primary border-b border-transparent font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5"
+
   return (
     <>
       <nav className="fixed top-0 w-full z-50 glass-header border-b border-outline-variant/15">
@@ -23,15 +25,25 @@ export default function Navbar() {
             Eternal Bloom
           </Link>
 
-          {/* Nav links — desktop (using single client island) */}
-          <NavLinksContainer
-            links={NAV_LINKS}
-            className="hidden md:flex gap-10"
-            activeClassName="text-primary border-b border-primary font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5"
-            inactiveClassName="text-on-surface hover:text-primary border-b border-transparent font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5"
-          />
+          {/* Nav links — desktop */}
+          {isStatic ? (
+            <div className="hidden md:flex gap-10">
+              {NAV_LINKS.map(link => (
+                <a key={link.href} href={link.href} className={commonLinkClasses}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ) : (
+            <NavLinksContainer
+              links={NAV_LINKS}
+              className="hidden md:flex gap-10"
+              activeClassName="text-primary border-b border-primary font-body text-[10px] uppercase tracking-[0.25em] transition-all duration-300 pb-0.5"
+              inactiveClassName={commonLinkClasses}
+            />
+          )}
 
-          {/* Actions (using dedicated client islands) */}
+          {/* Actions */}
           <div className="flex items-center gap-5">
             <ThemeToggle />
             <AccountButton />
@@ -39,7 +51,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Side Navigation — Desktop only (Purely static, no hydration!) */}
+      {/* Side Navigation — Desktop only (Purely static!) */}
       <aside className="fixed left-0 top-0 hidden lg:flex flex-col items-center py-8 z-40 h-screen w-16 bg-surface-container-lowest border-r border-outline-variant/10" style={{ willChange: 'transform' }}>
         <div className="mt-20 flex flex-col gap-8">
           {SIDE_TOOLS.map(item => (
@@ -62,7 +74,19 @@ export default function Navbar() {
       </aside>
 
       {/* Bottom Nav — Mobile (Island) */}
-      <MobileNav items={MOBILE_NAV} />
+      {!isStatic ? (
+        <MobileNav items={MOBILE_NAV} />
+      ) : (
+        <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-highest flex justify-around py-4 z-50 border-t border-outline-variant/10">
+          {MOBILE_NAV.map(item => (
+            <a key={item.icon} href={item.href} className="flex flex-col items-center gap-1 text-on-surface">
+              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>{item.icon}</span>
+              <span className="text-[8px] uppercase tracking-[0.12em]">{item.label}</span>
+            </a>
+          ))}
+        </nav>
+      )}
     </>
   )
 }
+

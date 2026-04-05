@@ -8,7 +8,7 @@ import QuoteSection from '@/components/sections/QuoteSection'
 export default function LandingPage() {
   return (
     <>
-      <Navbar />
+      <Navbar isStatic={true} />
       <main className="lg:pl-20">
         <HeroSection />
         <GallerySection />
