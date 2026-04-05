@@ -19,11 +19,6 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
   },
   experimental: {
-    // Inline the CSS into the HTML response instead of emitting a separate <link> stylesheet.
-    // This eliminates the render-blocking CSS chunk (10.5 KiB, 300ms) flagged by Lighthouse.
-    // Unlike `optimizeCss` (critters-based, Pages Router only), this is compatible with the
-    // App Router's streaming architecture and is the correct flag for Next.js 15+/16.
-    inlineCss: true,
   },
   // Support Turbopack resolving aliases for polyfill stripping.
   // Using an absolute path ensures the bundler definitively resolves the no-op file.
