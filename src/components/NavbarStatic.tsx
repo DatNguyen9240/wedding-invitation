@@ -1,5 +1,4 @@
-import ThemeToggle from '@/components/ui/ThemeToggle'
-import AccountButton from '@/components/navigation/AccountButton'
+import NavbarActions from '@/components/navigation/NavbarActions'
 import { NAV_LINKS, SIDE_TOOLS, MOBILE_NAV } from '@/constants/navigation'
 
 export default function NavbarStatic() {
@@ -24,10 +23,7 @@ export default function NavbarStatic() {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-5">
-            <ThemeToggle />
-            <AccountButton />
-          </div>
+          <NavbarActions />
         </div>
       </nav>
 
