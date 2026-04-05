@@ -74,45 +74,6 @@ export default function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem('eb-theme');if(t==='pink')document.documentElement.setAttribute('data-theme','pink');}catch(e){}})();`,
           }}
         />
-
-        {/*
-          Minimal critical CSS — inlined so the browser can paint the correct
-          dark background and typography baseline *before* the 10.5 KiB CSS
-          chunk finishes loading. Prevents flash of white/unstyled content.
-          Only includes rules that are (a) above-the-fold visible and
-          (b) not dependent on Tailwind utilities.
-        */}
-        <style dangerouslySetInnerHTML={{ __html: `
-          :root {
-            --color-background: #080810;
-            --color-on-background: #ede8e0;
-            --color-primary: #c9a97a;
-            --color-surface: #0f0f14;
-            --color-surface-container: #161620;
-            --color-outline-variant: #282018;
-            --color-secondary: #b89aae;
-            --color-on-surface: #ede8e0;
-            --color-on-surface-variant: #a09078;
-          }
-          :root[data-theme="pink"] {
-            --color-background: #0c0609;
-            --color-on-background: #f0e4ec;
-            --color-primary: #e896b0;
-            --color-surface: #160c14;
-            --color-surface-container: #1a0e18;
-            --color-outline-variant: #301828;
-            --color-secondary: #c07898;
-            --color-on-surface: #f0e4ec;
-            --color-on-surface-variant: #a08090;
-          }
-          html { -webkit-font-smoothing: antialiased; }
-          body {
-            background-color: var(--color-background);
-            color: var(--color-on-background);
-            margin: 0;
-            overflow-x: hidden;
-          }
-        `}} />
       </head>
       {/* No global transition on body to prevent 'Style & Layout' recalculation spikes during hydration */}
       <body className="bg-background text-on-background selection:bg-secondary/30 antialiased">
